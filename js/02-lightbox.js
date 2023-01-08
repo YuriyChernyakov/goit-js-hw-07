@@ -20,8 +20,4 @@ const createNewGallery = (elements) => {
 }
 createNewGallery(galleryItems);
 
-let clickImg = event => {
-    event.preventDefault();
-    const lightbox = new SimpleLightbox('.gallery a', {captionsData:'alt',captionDelay:250});
-}
-picturesAll.addEventListener('click', clickImg);
+const lightbox = new SimpleLightbox('.gallery a', {captionsData:'alt',captionDelay:250})

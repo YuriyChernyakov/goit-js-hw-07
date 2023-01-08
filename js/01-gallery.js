@@ -32,5 +32,6 @@ const clickImg = event => {
         instance.close();
         picturesAll.removeEventListener('keydown', clickCLose)}}
     picturesAll.addEventListener('keydown', clickCLose)
+
 }
 picturesAll.addEventListener('click', clickImg);

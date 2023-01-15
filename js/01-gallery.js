@@ -24,14 +24,16 @@ createNewGallery(galleryItems);
 const clickImg = event => {
     event.preventDefault();
     const bigPictures = event.target.dataset.source;
-    if (event.target.nodeName !== `IMG`) {return};
+    if (event.target.nodeName !== `IMG`) { return };
     const instance = basicLightbox.create(`<img src="${bigPictures}" width="800" height="600">`)
     instance.show();
-
-    const clickCLose = event => { if (event.code === 'Escape') {
-        instance.close();
-        picturesAll.removeEventListener('keydown', clickCLose)}}
-    picturesAll.addEventListener('keydown', clickCLose)
-
 }
+
+const clickCLose = event => {
+    if (event.code === 'Escape') {
+        instance.close(() => {
+            document.removeEventListener('keydown', clickCLose);
+            picturesAll.removeEventListener('click', clickCLose)
+        });
+        }}
 picturesAll.addEventListener('click', clickImg);
